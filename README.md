@@ -32,7 +32,7 @@ apache2
 php-mysqlnd php-fpm php-json
 php php-opcache php-cli php-gd php-curl
 
-### INSTALL MYSQL DEBIAN
+### INSTALLER MYSQL
 
 wget https://dev.mysql.com/downloads/repo/apt/ https://dev.mysql.com/get/mysql-apt-config_0.8.17-1_all.deb
 sudo dpkg -i mysql-apt-config*
@@ -79,4 +79,3 @@ Attention, le mot de passe doit être un minimum complexe ou le user ne pourra p
 
 License :
 WordPress is free software, and is released under the terms of the GPL(GNU General Public License) version 2 or (at your option) any later version. 
-
