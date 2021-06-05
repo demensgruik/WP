@@ -3,11 +3,11 @@
 Wordpress_Launcher
 Version : 1.0
 
-Developped by : C.Chanal
+Developped by : CCL
 
-Release date : 01 04 2021
+Release date : 04 2021
 
-Contexte :
+### Contexte :
 Ce script est écrit en Python 3.
 Le script permet d’installer et effectuer une configuration de base d’un wordpress.
 Cela comprend également la création de la base de données mysql et du user de connexion.
@@ -16,7 +16,7 @@ http://localhost:80/nomduprojet
 
 Avant l’exécution du script, un certain nombre de prérequis sont nécessaires. Ils sont principalement déjà préinstallés, une vérification est donc a faire ainsi qu’un update du système et de ses composants pour avoir la dernière version.
 
-Prérequis :
+### Prérequis :
 
 ### Librairies
 Sur DEBIAN
@@ -32,7 +32,7 @@ apache2
 php-mysqlnd php-fpm php-json
 php php-opcache php-cli php-gd php-curl
 
-### INSTALLER MYSQL
+### Installer MYSQL
 
 wget https://dev.mysql.com/downloads/repo/apt/ https://dev.mysql.com/get/mysql-apt-config_0.8.17-1_all.deb
 sudo dpkg -i mysql-apt-config*
@@ -65,7 +65,7 @@ Reload privilege tables now? Press y
 ### autorisation firewall
 Ne pas oublier, sur votre firewall, d’ouvrir les ports http, https
 
-Utilisation :
+### Utilisation :
 
 Copier le script wp-launcher.py dans /var/www/html
 
@@ -73,9 +73,9 @@ Modifier la ligne
 'EXEC':" -uroot -pAZERTYUI --host=localhost -f -e '",
 AZERTYUI doit être remplacé par le mot de passe root du système
 
-Aller dans /var/www/html
+Lancer dans /var/www/html
 wp-launcher.py <Nom_Projet> <Password> <VotreMail>
 Attention, le mot de passe doit être un minimum complexe ou le user ne pourra pas se créer dans mysql.
 
-License :
+### License :
 WordPress is free software, and is released under the terms of the GPL(GNU General Public License) version 2 or (at your option) any later version. 
