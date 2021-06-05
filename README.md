@@ -5,7 +5,7 @@ Version : 1.0
 
 Developped by : CCL
 
-Release date : 04 2021
+Release date : 05 2021
 
 ### Contexte :
 Ce script est écrit en Python 3.
