@@ -19,31 +19,31 @@ Avant l’exécution du script, un certain nombre de prérequis sont nécessaire
 ### Prérequis :
 
 ### Librairies
-Sur DEBIAN
-Mettre à jour les packages déjà installés
-sudo apt-get update
-sudo apt-get upgrade
-installer les packages suivants :
-wget dnsutils curl
-libapache2-mod-php
-ELinks
+Sur CENTOS
+>dnf install wget bind-utils curl
+>rpm -Uvh https://repo.mysql.com/mysql80-community-release-el8-1.noarch.rpm
+>sed -i '/enbaled=1/enabled=0' /etc/yum.repos.d/mysql-community-repo
+>dnf repolist enabled
 
-apache2
-php-mysqlnd php-fpm php-json
-php php-opcache php-cli php-gd php-curl
+>dnf install httpd 
+>dnf install php-mysqlnd php-fpm php-json
+>dnf install php php-opcache php-cli php-gd php-curl
+>systemctl start httpd
+>systemctl enable httpd
+
 
 ### Installer MYSQL
 
-wget https://dev.mysql.com/downloads/repo/apt/ https://dev.mysql.com/get/mysql-apt-config_0.8.17-1_all.deb
-sudo dpkg -i mysql-apt-config*
-Faire ok et installer par defaut mysql 8.0
-Mettre ensuite à jour les packages une nouvelle fois
-sudo apt update
-
-### installer mysql-server 
-sudo apt-get install mysql-server
-entrer le mot de passe root
-choisir l’authentification forte => STRONG
+>yum --enablerepo=mysql80-community install mysql mysql-server mysql-libs
+>systemctl enable mysqld.service
+>systemctl start mysqld.service
+  ## Modifier le mot "root" de mysql
+>sudo mysql_secure_installation
+Change the password for root? – Press y and change root password
+Remove anonymous users? Press y
+Disallow root login remotely? Press y
+Remove test database and access to it? y
+Reload privilege tables now? Press y
 
 Vérifier l’état du server mysql :
 systemctl status mysql.service
@@ -64,18 +64,23 @@ Reload privilege tables now? Press y
 
 ### autorisation firewall
 Ne pas oublier, sur votre firewall, d’ouvrir les ports http, https
+firewall-cmd --permanent --zone=public --add-service=http
+firewall-cmd --permanent --zone=public --add-service=https
+firewall-cmd --reload
 
 ### Utilisation :
-
 Copier le script wp-launcher.py dans /var/www/html
+si besoin le rendre éxécutable
 
 Modifier la ligne 
 'EXEC':" -uroot -pAZERTYUI --host=localhost -f -e '",
-AZERTYUI doit être remplacé par le mot de passe root du système
+AZERTYUI doit être remplacé par le mot de passe root MYSQL => attention a bien indiquer un mot de passe complexe ou le user ne pourra pas se créer dans mysql.
 
 Lancer dans /var/www/html
 wp-launcher.py <Nom_Projet> <Password> <VotreMail>
-Attention, le mot de passe doit être un minimum complexe ou le user ne pourra pas se créer dans mysql.
+
+### changement des droits :
+chown -R apache:apache /var/www/html/[nom_projet_wordpress]
 
 ### License :
 WordPress is free software, and is released under the terms of the GPL(GNU General Public License) version 2 or (at your option) any later version. 
