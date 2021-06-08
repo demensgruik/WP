@@ -9,12 +9,13 @@ Release date : 05 2021
 
 ### Contexte :
 Ce script est écrit en Python 3.
+L'environnement testé et détaillé dans la procédure ci-dessous est CENTOS.
 Le script permet d’installer et effectuer une configuration de base d’un wordpress.
 Cela comprend également la création de la base de données mysql et du user de connexion.
-Une fois l’installation effectuée, le site de base est accessible.
+Une fois l’installation effectuée, le site de base est accessible avant d'approfondir la configuration.
 http://localhost:80/nomduprojet
 
-Avant l’exécution du script, un certain nombre de prérequis sont nécessaires. Ils sont principalement déjà préinstallés, une vérification est donc a faire ainsi qu’un update du système et de ses composants pour avoir la dernière version.
+Avant l’exécution du script, un certain nombre de prérequis sont nécessaires. Ils sont principalement déjà préinstallés, une vérification est donc a faire ainsi qu’un update du système et de ses composants pour avoir les dernières versions.
 
 ### Prérequis :
 
